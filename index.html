@@ -389,8 +389,8 @@ Made with 🤎 & lots of cookies • Bvn Soft Cookies
 </footer>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp }
+
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 import {
@@ -402,24 +402,153 @@ query,
 orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
-  
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAuYo7hseQvNr3lZtUdD0cvlY9VIcw0fqM",
-    authDomain: "bvn-cookies.firebaseapp.com",
-    projectId: "bvn-cookies",
-    storageBucket: "bvn-cookies.firebasestorage.app",
-    messagingSenderId: "194114037919",
-    appId: "1:194114037919:web:394bb3ba930027a7ee5aaa",
-    measurementId: "G-MVY57P3YLP"
-  };
+const firebaseConfig = {
+apiKey: "AIzaSyAuYo7hseQvNr3lZtUdD0cvlY9VIcw0fqM",
+authDomain: "bvn-cookies.firebaseapp.com",
+projectId: "bvn-cookies",
+storageBucket: "bvn-cookies.firebasestorage.app",
+messagingSenderId: "194114037919",
+appId: "1:194114037919:web:394bb3ba930027a7ee5aaa"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db =
+const app =
+initializeApp(firebaseConfig);
+
+const db =
 getFirestore(app);
+
+let selectedRating = 5;
+
+window.submitTestimoni =
+async function(){
+
+const name =
+document.getElementById("anon").checked
+? "Anonim"
+: document.getElementById("name").value || "Anonim";
+
+const message =
+document.getElementById("message").value;
+
+const tags =
+document.getElementById("tags").value;
+
+if(!message.trim()){
+
+alert("Isi testimoni dulu");
+return;
+
+}
+
+await addDoc(
+collection(db,"testimonials"),
+{
+name,
+message,
+tags,
+rating:selectedRating,
+createdAt:Date.now()
+}
+);
+
+document.getElementById(
+"success"
+).style.display="block";
+
+document.getElementById("name").value="";
+document.getElementById("message").value="";
+document.getElementById("tags").value="";
+
+loadTestimonials();
+
+};
+
+async function loadTestimonials(){
+
+const container =
+document.getElementById(
+"testimonialContainer"
+);
+
+container.innerHTML="";
+
+const q =
+query(
+collection(db,"testimonials"),
+orderBy("createdAt","desc")
+);
+
+const snapshot =
+await getDocs(q);
+
+snapshot.forEach(doc=>{
+
+const item =
+doc.data();
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+<div class="stars">${"⭐".repeat(item.rating)}</div>
+<p>${item.message}</p>
+<div class="author">${item.name}</div>
+<div class="tags">${item.tags}</div>
+`;
+
+container.append(card);
+
+});
+
+}
+
+document
+.querySelectorAll(".star")
+.forEach(star=>{
+
+star.addEventListener(
+"click",
+()=>{
+
+selectedRating =
+Number(
+star.dataset.value
+);
+
+document
+.querySelectorAll(".star")
+.forEach(s=>{
+
+s.classList.remove(
+"active"
+);
+
+if(
+Number(
+s.dataset.value
+)
+<= selectedRating
+){
+
+s.classList.add(
+"active"
+);
+
+}
+
+});
+
+}
+
+);
+
+});
+
+loadTestimonials();
+
 </script>
 
 </body>
