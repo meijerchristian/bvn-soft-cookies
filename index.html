@@ -258,7 +258,7 @@ font-size:140px;
 🍪 Bvn Cookies
 </div>
 
-<a href="https://wa.me/6285280619020?text=Halo%20kak,%20aku%20mau%20pesan%20soft%20cookies%20nya%20dong!" class="btn" target"_blank">
+<a href="https://wa.me/6285280619020?text=Halo%20kak,%20aku%20mau%20pesan%20soft%20cookies%20nya%20dong!" class="btn" target="_blank">
 Pesan Sekarang!
 </a>
 
@@ -390,8 +390,7 @@ Made with 🤎 & lots of cookies • Bvn Soft Cookies
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 import {
 getFirestore,
@@ -412,37 +411,95 @@ messagingSenderId: "194114037919",
 appId: "1:194114037919:web:394bb3ba930027a7ee5aaa"
 };
 
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 let selectedRating = 5;
 
+/* rating */
+const stars =
+document.querySelectorAll(".star");
+
+function updateStars(rating){
+
+selectedRating = rating;
+
+stars.forEach(star=>{
+
+if(
+Number(star.dataset.value)
+<= rating
+){
+star.classList.add("active");
+}else{
+star.classList.remove("active");
+}
+
+});
+
+}
+
+updateStars(5);
+
+stars.forEach(star=>{
+
+star.addEventListener(
+"click",
+()=>{
+
+updateStars(
+Number(
+star.dataset.value
+)
+);
+
+}
+
+);
+
+});
+
+/* submit */
 window.submitTestimoni =
 async function(){
+
+try{
 
 const name =
 document.getElementById("anon").checked
 ? "Anonim"
-: document.getElementById("name").value || "Anonim";
+:
+(
+document.getElementById("name").value
+|| "Anonim"
+);
 
 const message =
-document.getElementById("message").value;
+document
+.getElementById("message")
+.value
+.trim();
 
 const tags =
-document.getElementById("tags").value;
+document
+.getElementById("tags")
+.value;
 
-if(!message.trim()){
+if(!message){
 
-alert("Isi testimoni dulu");
+alert(
+"Isi testimoni terlebih dahulu."
+);
+
 return;
 
 }
 
 await addDoc(
-collection(db,"testimonials"),
+collection(
+db,
+"testimonials"
+),
 {
 name,
 message,
@@ -452,23 +509,42 @@ createdAt:Date.now()
 }
 );
 
-document.getElementById(
-"success"
-).style.display="block";
+document
+.getElementById("success")
+.style.display =
+"block";
 
-document.getElementById("name").value="";
-document.getElementById("message").value="";
-document.getElementById("tags").value="";
+document
+.getElementById("name")
+.value="";
 
-loadTestimonials();
+document
+.getElementById("message")
+.value="";
+
+document
+.getElementById("tags")
+.value="";
+
+document
+.getElementById("anon")
+.checked=false;
+
+await loadTestimonials();
+
+}catch(err){
+
+console.error(err);
+
+alert(
+"Gagal mengirim testimoni"
+);
+
+}
 
 };
 
 async function loadTestimonials(){
-...
-}
-
-loadTestimonials();
 
 const container =
 document.getElementById(
@@ -477,14 +553,19 @@ document.getElementById(
 
 container.innerHTML="";
 
-const q =
-query(
-collection(db,"testimonials"),
-orderBy("createdAt","desc")
-);
-
 const snapshot =
-await getDocs(q);
+await getDocs(
+query(
+collection(
+db,
+"testimonials"
+),
+orderBy(
+"createdAt",
+"desc"
+)
+)
+);
 
 snapshot.forEach(doc=>{
 
@@ -492,64 +573,39 @@ const item =
 doc.data();
 
 const card =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
-card.className="card";
+card.className =
+"card";
 
-card.innerHTML=`
-<div class="stars">${"⭐".repeat(item.rating)}</div>
-<p>${item.message}</p>
-<div class="author">${item.name}</div>
-<div class="tags">${item.tags}</div>
+card.innerHTML=
+`
+<div class="stars">
+${"⭐".repeat(item.rating)}
+</div>
+
+<p>
+${item.message}
+</p>
+
+<div class="author">
+${item.name}
+</div>
+
+<div class="tags">
+${item.tags||""}
+</div>
 `;
 
-container.append(card);
+container.append(
+card
+);
 
 });
 
 }
-
-document
-.querySelectorAll(".star")
-.forEach(star=>{
-
-star.addEventListener(
-"click",
-()=>{
-
-selectedRating =
-Number(
-star.dataset.value
-);
-
-document
-.querySelectorAll(".star")
-.forEach(s=>{
-
-s.classList.remove(
-"active"
-);
-
-if(
-Number(
-s.dataset.value
-)
-<= selectedRating
-){
-
-s.classList.add(
-"active"
-);
-
-}
-
-});
-
-}
-
-);
-
-});
 
 loadTestimonials();
 
