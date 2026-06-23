@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bvn Soft Cookies</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#fff9f4;
+--card:#ffffff;
+--brown:#6f3b1e;
+--light:#f5ebe3;
+--text:#432818;
+--shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+}
+
+header{
+padding:25px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+background:rgba(255,249,244,.95);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+}
+
+.btn{
+background:var(--brown);
+color:white;
+padding:14px 26px;
+border-radius:999px;
+text-decoration:none;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+.hero{
+padding:80px 8%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.hero h1{
+font-size:4rem;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.1rem;
+margin-bottom:30px;
+}
+
+.cookie-hero{
+font-size:220px;
+text-align:center;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-15px);
+}
+}
+
+.section-title{
+text-align:center;
+font-size:2.2rem;
+margin-bottom:15px;
+}
+
+.section-sub{
+text-align:center;
+opacity:.7;
+margin-bottom:40px;
+}
+
+.testimonials{
+padding:80px 8%;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--card);
+padding:24px;
+border-radius:24px;
+box-shadow:var(--shadow);
+}
+
+.card .stars{
+font-size:20px;
+margin-bottom:12px;
+}
+
+.card p{
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.author{
+font-weight:600;
+margin-bottom:10px;
+}
+
+.tags{
+display:inline-block;
+background:var(--light);
+padding:8px 14px;
+border-radius:999px;
+font-size:13px;
+}
+
+.form-section{
+padding:80px 8%;
+}
+
+.form-card{
+max-width:800px;
+margin:auto;
+background:white;
+padding:35px;
+border-radius:30px;
+box-shadow:var(--shadow);
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:600;
+}
+
+input,
+textarea{
+width:100%;
+padding:16px;
+border:none;
+background:#faf6f2;
+border-radius:16px;
+font-size:15px;
+}
+
+textarea{
+min-height:150px;
+resize:none;
+}
+
+.rating{
+display:flex;
+gap:10px;
+font-size:35px;
+cursor:pointer;
+}
+
+.star{
+opacity:.3;
+transition:.2s;
+}
+
+.star.active{
+opacity:1;
+}
+
+.checkbox{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.checkbox input{
+width:auto;
+}
+
+.success{
+display:none;
+margin-top:20px;
+padding:18px;
+background:#eaf8ea;
+color:#0c6d2a;
+border-radius:16px;
+}
+
+footer{
+padding:50px;
+text-align:center;
+opacity:.7;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero h1{
+font-size:2.8rem;
+}
+
+.cookie-hero{
+font-size:140px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+🍪 Bvn Cookies
+</div>
+
+<a href="https://wa.me/6285280619020?text=Halo%20kak,%20aku%20mau%20pesan%20soft%20cookies%20nya%20dong!" class="btn" target"_blank">
+Pesan Sekarang!
+</a>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<h1>
+Cerita Manis dari
+Pecinta Cookies 🤎
+</h1>
+
+<p>
+Terima kasih sudah memilih Bvn Soft Cookies dan menjadi bagian dari perjalanan manis kami. 
+Setiap pesanan yang kamu buat, berarti banget bagi kami. 
+Kami bakal lebih senang kalau kamu bersedia berbagi cerita, kesan, atau pengalamanmu setelah menikmati cookies kami. 
+Big love and pleasure for you 💖
+</p>
+
+<a href="#form" class="btn">
+Tulis Testimoni
+</a>
+
+</div>
+
+<div class="cookie-hero">
+🍪
+</div>
+
+</section>
+
+<section class="testimonials">
+
+<h2 class="section-title">
+Testimoni dari Coo-kiss~ 🍪
+</h2>
+
+<p class="section-sub">
+Setiap orang punya cerita, termasuk saat menikmati Bvn Soft Cookies
+</p>
+
+<div class="grid" id="testimonialContainer">
+
+<div class="card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+Cookiesnya chewy banget dan cokelatnya melimpah.
+</p>
+<div class="author">Anonim</div>
+<div class="tags">Chewy • Nagih • Premium</div>
+</div>
+
+<div class="card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+Packaging lucu dan rasanya bikin pengen beli lagi.
+</p>
+<div class="author">Nadya</div>
+<div class="tags">Enak • Lucu • Worth It</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="form" class="form-section">
+
+<div class="form-card">
+
+<h2 class="section-title">
+Tulis Testimoni 🍪
+</h2>
+
+<div class="form-group">
+<label>Nama (opsional)</label>
+<input id="name">
+</div>
+
+<div class="form-group">
+<label>Rating</label>
+
+<div class="rating">
+
+<span class="star" data-value="1">⭐</span>
+<span class="star" data-value="2">⭐</span>
+<span class="star" data-value="3">⭐</span>
+<span class="star" data-value="4">⭐</span>
+<span class="star" data-value="5">⭐</span>
+
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Testimoni</label>
+<textarea id="message"></textarea>
+</div>
+
+<div class="form-group">
+<label>3 Kata untuk Cookies Kami</label>
+<input id="tags"
+placeholder="Chewy, Nagih, Premium">
+</div>
+
+<div class="checkbox">
+<input type="checkbox" id="anon">
+<span>Kirim sebagai anonim</span>
+</div>
+
+<br>
+
+<button class="btn" onclick="submitTestimoni()">
+Kirim Testimoni
+</button>
+
+<div class="success" id="success">
+Terima kasih 🍪 Testimoni kamu berhasil dikirim.
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Made with 🤎 & lots of cookies • Meijjerr Soft Cookies
+</footer>
+
+<script>
+
+let selectedRating = 5;
+
+const stars = document.querySelectorAll(".star");
+
+function updateStars(rating){
+
+selectedRating = rating;
+
+stars.forEach(star=>{
+
+star.classList.remove("active");
+
+if(star.dataset.value <= rating){
+star.classList.add("active");
+}
+
+});
+
+}
+
+updateStars(5);
+
+stars.forEach(star=>{
+
+star.addEventListener("click",()=>{
+
+updateStars(star.dataset.value);
+
+});
+
+});
+
+function saveTestimonials(data){
+
+let testimonials =
+JSON.parse(localStorage.getItem("cookiesTestimonials")) || [];
+
+testimonials.unshift(data);
+
+localStorage.setItem(
+"cookiesTestimonials",
+JSON.stringify(testimonials)
+);
+
+}
+
+function loadTestimonials(){
+
+let testimonials =
+JSON.parse(localStorage.getItem("cookiesTestimonials")) || [];
+
+const container =
+document.getElementById("testimonialContainer");
+
+testimonials.forEach(item=>{
+
+const card = document.createElement("div");
+
+card.className = "card";
+
+card.innerHTML = `
+<div class="stars">${"⭐".repeat(item.rating)}</div>
+<p>${item.message}</p>
+<div class="author">${item.name}</div>
+<div class="tags">${item.tags}</div>
+`;
+
+container.prepend(card);
+
+});
+
+}
+
+function submitTestimoni(){
+
+const name =
+document.getElementById("anon").checked
+? "Anonim"
+: document.getElementById("name").value || "Anonim";
+
+const message =
+document.getElementById("message").value;
+
+const tags =
+document.getElementById("tags").value;
+
+if(message.trim()===""){
+alert("Isi testimoni terlebih dahulu.");
+return;
+}
+
+const data = {
+name,
+message,
+tags,
+rating:selectedRating
+};
+
+saveTestimonials(data);
+
+const container =
+document.getElementById("testimonialContainer");
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+<div class="stars">${"⭐".repeat(selectedRating)}</div>
+<p>${message}</p>
+<div class="author">${name}</div>
+<div class="tags">${tags}</div>
+`;
+
+container.prepend(card);
+
+document.getElementById("success").style.display="block";
+
+document.getElementById("name").value="";
+document.getElementById("message").value="";
+document.getElementById("tags").value="";
+document.getElementById("anon").checked=false;
+
+}
+
+loadTestimonials();
+
+</script>
+
+</body>
+</html>
